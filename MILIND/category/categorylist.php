@@ -27,10 +27,10 @@ if (!$_SESSION['email']) {
                 if ($_SESSION['email'] == "testuser@kcsitglobal.com") { ?>
                 <div class="pull-right">
                     <a class="btn btn-primary" href="addcategory.php"> Add Category</a>
-                    <a class="btn btn-primary" href="../index.php"> Back</a>
+                    <a class="btn btn-primary" href="../index.php"> Home</a>
                 </div>
                 <?php } else { ?>
-                <a class="btn btn-primary" href="../index.php"> Back</a>
+                <a class="btn btn-primary" href="../index.php"> Home</a>
                 <?php } ?>
             </div>
         </div>

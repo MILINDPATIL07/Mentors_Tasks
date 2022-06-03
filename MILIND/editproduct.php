@@ -16,7 +16,7 @@ include 'edit_product_process.php';
 
 <body>
     <div class="pull-right">
-        <h3>Logout : <a href="../logout.php" class="btn btn-warning"><?= $_SESSION['email'] ?></a></h3>
+        <h3>Logout : <a href="../logout.php" class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');"><?= $_SESSION['email'] ?></a></h3>
     </div>
     <div class="container">
         

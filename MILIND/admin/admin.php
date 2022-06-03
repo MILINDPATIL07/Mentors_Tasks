@@ -6,6 +6,7 @@ if (!$_SESSION['email']) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Admin Page</title>
 
@@ -14,15 +15,14 @@ if (!$_SESSION['email']) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../css/Home_CSS.css" />
-
     <script type="text/javascript" src="../js/ajaxdelete_admin.js"></script>
 </head>
 
 <body>
-    
+
     <span id="txtmsg"></span>
     <div class="pull-right">
-        <h3>Logout: <a href="../logout.php" class="btn btn-warning"><?= $_SESSION['email'] ?></a></h3>
+        <h4>Logout: <a href="../logout.php" class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');"><?= $_SESSION['email'] ?></a></h4>
     </div>
     <div class="container">
         <div class="row" style="margin-top: 5rem;">
@@ -32,12 +32,12 @@ if (!$_SESSION['email']) {
                 if ($_SESSION['email'] == "testuser@kcsitglobal.com") { ?>
                     <div class="pull-right">
                         <a class="btn btn-primary" href="createadmin.php"> Create New Admin</a>
-                        <a class="btn btn-primary" href="../index.php"> Back</a>
+                        <a class="btn btn-primary" href="../index.php"> Home</a>
                         <!-- <a class="btn btn-success" href="category/categorylist.php"> Category</a> -->
                         <!-- <a class="btn btn-success" href="product/product.php"> Product</a> -->
                     </div>
                 <?php } else { ?>
-                    <a class="btn btn-primary" href="../index.php"> Back</a>
+                    <a class="btn btn-primary" href="../index.php"> Home</a>
                 <?php } ?>
 
             </div>
@@ -84,4 +84,5 @@ if (!$_SESSION['email']) {
             </table>
         </div>
 </body>
+
 </html>

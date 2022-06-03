@@ -26,13 +26,13 @@ if (isset($_POST['request'])) {
             <?php
                 if ($_SESSION['email'] == "testuser@kcsitglobal.com") { ?>
 
-            <a class="btn btn-primary" href="addproduct.php"> Add New Product</a>
+            <!-- <a class="btn btn-primary" href="addproduct.php"> Add New Product</a> -->
             <!-- <a class="btn btn-success" href="addproduct.php"> Add New Product</a> -->
             <!-- <a class="btn btn-primary" href="../product/product.php"> Back</a> -->
 
             <?php } else { ?>
-            <a class="btn btn-primary" href="category/categorylist.php"> Category List</a>
-            <a class="btn btn-primary" href="admin/admin.php"> Admin list</a>
+            <!-- <a class="btn btn-primary" href="category/categorylist.php"> Category List</a> -->
+            <!-- <a class="btn btn-primary" href="admin/admin.php"> Admin list</a> -->
             <?php } ?>
         </div>
     </div>

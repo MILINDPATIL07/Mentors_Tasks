@@ -33,7 +33,7 @@ if (!$_SESSION['email']) {
                 <li><a href="category/categorylist.php">Category</a></li>
             </ul>
             <div class="pull-right" style="color:aliceblue;">
-                <h4>Logout : <a href="logout.php" class="btn btn-warning"><?= $_SESSION['email'] ?></a></h4>
+                <h4>Logout : <a href="logout.php" class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');"><?= $_SESSION['email'] ?></a></h4>
             </div>
         </div>
     </nav>

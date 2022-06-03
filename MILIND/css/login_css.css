@@ -1,0 +1,22 @@
+#cnform {
+
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 4px 4px 4px 4px white;
+    background-color: black;
+    border-radius: 5px;
+    padding-top: 10px;
+}
+
+#i {
+    color: black;
+}
+
+b,
+fa {
+    color: white;
+}
+#btnsub{
+    display: flex;
+    justify-content: center;
+}
