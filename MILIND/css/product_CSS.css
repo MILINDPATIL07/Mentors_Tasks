@@ -1,0 +1,35 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#Productlist {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#Productlist td, #Productlist th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#Productlist th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+    align-items: center;
+  }
+  #productbody {
+      text-align: center;
+  }
+  #producthead {
+    text-align: center;
+  }
+
+  #Productlist th {
+      text-align: center;
+  }
+ 
