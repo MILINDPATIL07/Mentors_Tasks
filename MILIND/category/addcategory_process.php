@@ -5,6 +5,7 @@ if (isset($_POST) && count($_POST) > 0) {
     $name = $_POST["cname"];
     $active = $_POST["active"];
     if ($name != "" && $active != "") {
+        
         $sql = "INSERT INTO category VALUES (NULL,'$name','$active')";
         if (mysqli_query($conn, $sql)) {
             header("Location:categorylist.php");

@@ -14,7 +14,7 @@ $did=$_GET['id'];
         if ($conn->query($sql) === TRUE) {
         echo '1';
         } else {
-        echo "Error deleting record: " . $conn->error;
+        echo "Error While deleting record: " . $conn->error;
         }
     }
   ?>

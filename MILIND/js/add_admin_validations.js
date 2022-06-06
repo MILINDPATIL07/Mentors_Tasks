@@ -10,7 +10,7 @@ $(document).ready(function () {
         nameflag = false;
         $("#nameval").empty();
         if ($(this).val() == "" || $(this).val() == null) {
-            $("#nameval").html("(*) Name required..!!");
+            $("#nameval").html("(*) Name Required..!!");
             nameflag = false;
         }
         else {
@@ -58,27 +58,14 @@ $(document).ready(function () {
                 passwordflag = true;
             }
         }
-    });
-    
-    // $("#hobbies").blur(function () {
-    //     hobbiesflag = false;
-    //     $("#hobbiesval").empty();
-    //     if ($(this).val() == "" ||  $("input.select:checked").length > 0) {
-    //         //$("input.select:checked").length > 0
-    //         $("#hobbiesval").html("(*) Please Select a Hobbies ..!!");
-    //         hobbiesflag = false;
-    //     }
-    //     else {
-    //         hobbiesflag = true;
-    //     }
-    // });
-
+    });    
+   
     $('#name').keypress(function (e) {
         $('#nameval').empty();
         var flag = false;
         (e.which >= 65 && e.which <= 90) || (e.which >= 92 && e.which <= 122)
             ? flag = true
-            : (flag = false, $('#nameval').html('(*) Please Enter Valid Name..'));
+            : (flag = false, $('#nameval').html('(*) Please Enter Valid Name..!'));
         return flag;
     });
     
@@ -87,7 +74,7 @@ $(document).ready(function () {
         nameflag = false;
         $("#nameval").empty();
         if ($("#name").val() == "" || $("#name").val() == null) {
-            $("#nameval").html("(*) Firstname Required..!!");
+            $("#nameval").html("(*) Name Required..!!");
             nameflag = false;
         }
         else {
@@ -128,47 +115,23 @@ $(document).ready(function () {
             else {  
                 passwordflag = true;
             }
-        }
-
-        // hobbiesflag = false;
-        // $("#hobbiesval").empty();
-        // if ($("#hobbies").val() == "" ||  $("input.select:checked").length > 0) {
-        //     //$("input.select:checked").length > 0
-        //     $("#hobbiesval").html("(*) Please Select a Hobbies ..!!");
-        //     hobbiesflag = false;
-        // }
-        // else {
-        //     hobbiesflag = true;
-        // }
-
-        // hobbiesflag = false;       
-        //     $("#hobbiesval").empty();
-        //     if ($("#hobbies").find("select:checked").text() == "") {
-        //         $("#hobbiesval").html("(*) Designation required..!!");
-        //         hobbiesflag = false; 
-
-        //     } else {
-
-        //         hobbiesflag = true;
-        //     }
+        }       
 
          hobbiesflag = false;
         $("#hobbiesval").empty();
         if ($("#hobbies").val() == "" ||  $("input[type='checkbox']:checked").length == 0) {
             //$("input.select:checked").length > 0
-            $("#hobbiesval").html("(*) Please Select a checkbox ..!!");
+            $("#hobbiesval").html("(*) Please Select Atleast one checkbox ..!!");
             hobbiesflag = false;
         }
         else {
             hobbiesflag = true;
-        }        
-
-
-
+        }    
+        
         if (nameflag == true && emailflag == true && passwordflag == true && hobbiesflag==true) {
            // alert("Form submitted successfully..!!");
             document.register.submit();
-            // location.replace("process1.php")
+          
         } else {
 
             // alert("Form");

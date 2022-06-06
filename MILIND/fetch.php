@@ -4,9 +4,7 @@ include "connection.php";
 if (isset($_POST['request'])) {
     $request = $_POST['request'];
     $query = "SELECT * FROM product WHERE category_id = '$request' ";
-
     // $query = "SELECT p.id, p.p_name, p.category_id,p.images, c.name, c.active FROM product as p join category as c on p.category_id = c.id  where c.active = '$request' ";
-
     $result = mysqli_query($conn, $query);
     $count = mysqli_num_rows($result);
 ?>

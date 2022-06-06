@@ -34,7 +34,7 @@ if (!$_SESSION['email']) {
                     <hr>
                     <div class="form-group">
                         <strong>Name:</strong>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter First Name" autofocus>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter Admin Name" autofocus>
                         <span class="text-danger" id="nameval"></span>
                     </div>
 
@@ -42,6 +42,19 @@ if (!$_SESSION['email']) {
                         <strong>Email:</strong>
                         <input type="text" id="email" name="email" class="form-control" placeholder="Enter Email" autofocus>
                         <span class="text-danger" id="emailval"></span>
+                        <span style="color:red;text-align: center;">
+                        <?php
+                        if (isset($_REQUEST['email'])) {
+                            # code...
+                            $msg2 = $_REQUEST['email'];
+                        ?>
+                            <p> <?php echo $msg2; ?></p>
+                        <?php
+                        } else {
+                            $msg2 = "";
+                        }
+                        ?>
+                    </span>
                     </div>
 
                     <div class="form-group">

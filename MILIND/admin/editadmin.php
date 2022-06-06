@@ -2,21 +2,19 @@
 session_start();
 if (!$_SESSION['email']) {
     header("Location:../login.php");
-} ?>
-<?php
+} 
 include "edit_admin_process.php";
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title> Edit Admin</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>    
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
-    <!-- JAVASCRIPT Validation Extermal Link  -->
-    <script src="../js/validation.js"></script>
+    <!-- Jquery Validation Extermal Link  -->
+    <script type="text/javascript" src="../js/add_admin_validations.js"></script>
 </head>
 
 <body>
@@ -33,6 +31,7 @@ include "edit_admin_process.php";
         </div>
         <form action="" method="POST">
             <?php
+            
             $sql = "select * from admin where id='$id'";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
@@ -95,7 +94,7 @@ include "edit_admin_process.php";
                 <?php
                 }
             } else {
-                echo "Error";
+                echo "Sorry...No Records Found...!";
             }
                 ?>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

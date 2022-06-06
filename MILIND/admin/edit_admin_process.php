@@ -14,13 +14,18 @@ if (isset($_REQUEST['edit'])) {
     $gender = $_POST["gender"];
     $hobbies = implode(',', $_POST["checkbox"]);
 
-    $edit = "UPDATE `admin` SET `name`='$name',`email`='$email',`password`='$password',`gender`='$gender',`hobbies`='$hobbies' WHERE `id`='$id'";
-    $result1 = $conn->query($edit);
+    if ($name != ""  && $email != "" && $password != "" && $gender != "" && $hobbies != "") {
 
-    if ($result1 == TRUE) {
-        header("Location:admin.php");
+        $edit = "UPDATE `admin` SET `name`='$name',`email`='$email',`password`='$password',`gender`='$gender',`hobbies`='$hobbies' WHERE `id`='$id'";
+        $result1 = $conn->query($edit);
+
+        if ($result1 == TRUE) {
+            header("Location:admin.php");
+        } else {
+            echo "Error:" . $edit . "<br>" . $conn->error;
+        }
     } else {
-        echo "Error:" . $edit . "<br>" . $conn->error;
+        echo("Please input all Required fields..!!");
     }
 }
 ?>

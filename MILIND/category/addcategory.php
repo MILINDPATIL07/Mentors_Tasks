@@ -31,8 +31,7 @@ if (!$_SESSION['email']) {
             </div>
         </div>
         <form name="category" action="addcategory_process.php" method="POST">
-
-        <form name="" action="addcategory_process.php" method="POST">
+        <!-- <form name="" action="addcategory_process.php" method="POST"> -->
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">

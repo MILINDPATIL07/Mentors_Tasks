@@ -3,10 +3,8 @@ session_start();
 if (!$_SESSION['email'] == "testuser@kcsitglobal.com") {
     header("Location:login.php");
 }
-
 ?>
 <html>
-
 <head>
     <title>product</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
@@ -16,7 +14,6 @@ if (!$_SESSION['email'] == "testuser@kcsitglobal.com") {
     <script type="text/javascript" src="js/add_product_validations.js"></script>
 </head>
 </head>
-
 <body>
     <div class="pull-right">
         <h3>Logout : <a href="logout.php" class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');"><?= $_SESSION['email'] ?></a></h3>
