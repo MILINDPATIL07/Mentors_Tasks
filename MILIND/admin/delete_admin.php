@@ -1,10 +1,13 @@
 
 <?php
 session_start();
-if (!$_SESSION['email']) {
-  header("Location:../login.php");
+include "connection.php";
+@$email=$_SESSION['email1'];
+$utype=$_SESSION['utype1'];
+
+if ($utype == 2) {
+    header("Location:login.php");
 }
- include "../connection.php";
 
   $did = $_GET['id'];
   $query = "SELECT * FROM admin where id = '$did'";

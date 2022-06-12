@@ -1,7 +1,11 @@
 <?php
 session_start();
-if (!$_SESSION['email']) {
-    header("Location:../login.php");
+include 'connection.php';
+@$email = $_SESSION['email1'];
+$utype = $_SESSION['utype1'];
+echo "$utype";
+if ($utype == 2 || !$utype == 1) {
+    header("Location:login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -19,8 +23,9 @@ if (!$_SESSION['email']) {
 
 <body>
     <div class="pull-right">
-        <h4>Logout : <a href="../logout.php" class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');"><?= $_SESSION['email'] ?></a></h4>
+        <h4> <?php echo "$email"; ?> <a href="logout.php" class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');"> Logout</a></h4>
     </div>
+
     <div class="container">
         <div class="row">
         </div>
@@ -43,18 +48,18 @@ if (!$_SESSION['email']) {
                         <input type="text" id="email" name="email" class="form-control" placeholder="Enter Email" autofocus>
                         <span class="text-danger" id="emailval"></span>
                         <span style="color:red;text-align: center;">
-                        <?php
-                        if (isset($_REQUEST['email'])) {
-                            # code...
-                            $msg2 = $_REQUEST['email'];
-                        ?>
-                            <p> <?php echo $msg2; ?></p>
-                        <?php
-                        } else {
-                            $msg2 = "";
-                        }
-                        ?>
-                    </span>
+                            <?php
+                            if (isset($_REQUEST['email_error'])) {
+                                # code...
+                                $msg2 = $_REQUEST['email_error'];
+                            ?>
+                                <p> <?php echo $msg2; ?></p>
+                            <?php
+                            } else {
+                                $msg2 = "";
+                            }
+                            ?>
+                        </span>
                     </div>
 
                     <div class="form-group">
@@ -77,24 +82,18 @@ if (!$_SESSION['email']) {
                         <div>
                             <span class="text-danger" id="hobbiesval"></span>
                         </div>
-                    </div>
+                    </div class="form-group">
+                    <strong>Password:</strong>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" class="form-control" autofocus>
+                    <span class="text-danger" id="passwordval"></span>
 
-
-                    <div class="form-group">
-                        <strong>Password:</strong>
-                        <input type="password" id="password" name="password" placeholder="Enter your password" class="form-control" autofocus>
-                        <span class="text-danger" id="passwordval"></span>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center" id="btnid">
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="margin-top: 10px" id="btnid">
                         <button type="button" id="Btnsubmit" name="btnsubmit" class="btn btn-primary">Submit</button>
-
-
-                        <a class="btn btn-primary" href="admin.php"> Cancel</a><br>
+                        <a class="btn btn-primary" href="adminlist.php"> Cancel</a><br>
                     </div>
                 </div>
+            </div>
         </form>
     </div>
 </body>
-
 </html>

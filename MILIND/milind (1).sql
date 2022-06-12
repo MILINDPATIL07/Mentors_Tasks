@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2022 at 10:08 AM
+-- Generation Time: Jun 12, 2022 at 12:59 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -33,18 +33,20 @@ CREATE TABLE `admin` (
   `email` varchar(255) NOT NULL,
   `gender` enum('Male','Female') NOT NULL,
   `hobbies` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `utype` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `name`, `email`, `gender`, `hobbies`, `password`) VALUES
-(1, 'milind', 'milind@gmail.com', 'Male', 'Cricket,Singing,Swimming', 'Pass@123'),
-(2, 'vishal', 'vishal@gmail.com', 'Male', 'Cricket', 'Pass@123'),
-(3, 'chaitanya', 'chaitanya@gmail.com', 'Male', 'Cricket,Singing,Swimming,Shopping', 'Pass@123'),
-(4, 'ash', 'ash@gmail.com', 'Male', 'Singing,Shopping', 'Pass@123');
+INSERT INTO `admin` (`id`, `name`, `email`, `gender`, `hobbies`, `password`, `utype`) VALUES
+(1, 'super admin', 'testuser@kcsitglobal.com', '', '', 'secret', '1'),
+(2, 'milind', 'milind@gmail.com', 'Male', 'Cricket,Singing,Shopping', 'Pass@123', '2'),
+(3, 'chaitanya', 'chaitanya@gmail.com', 'Male', 'Cricket,Singing,Swimming,Shopping', 'Pass@123', '2'),
+(5, 'bhavesh', 'bhavesh@gmail.com', 'Male', 'Cricket', 'Pass@123', '2'),
+(6, 'vishal', 'vishal@gmail.com', 'Male', 'Cricket,Singing,Swimming,Shopping', 'Pass@123', '2');
 
 -- --------------------------------------------------------
 
@@ -54,7 +56,7 @@ INSERT INTO `admin` (`id`, `name`, `email`, `gender`, `hobbies`, `password`) VAL
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `cname` varchar(255) NOT NULL,
   `active` enum('Yes','No') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -62,12 +64,13 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `active`) VALUES
-(1, 'Mobile', 'Yes'),
+INSERT INTO `category` (`id`, `cname`, `active`) VALUES
+(1, 'Mobiles', 'Yes'),
 (2, 'Laptops', 'Yes'),
-(3, 'Cars', 'No'),
-(4, 'Headphones', 'No'),
-(5, 'milind', 'Yes');
+(3, 'Cars', 'Yes'),
+(4, 'Headphones', 'Yes'),
+(5, 'Milind', 'Yes'),
+(7, 'test', 'No');
 
 -- --------------------------------------------------------
 
@@ -89,16 +92,14 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `p_name`, `category_id`, `images`, `createdbyuser`, `active`) VALUES
-(1, 'Samsung', 1, 'S22.jpeg', 'testuser@kcsitglobal.com', 'Yes'),
-(2, 'Oneplus', 1, 'oneplus.jpeg', 'testuser@kcsitglobal.com', 'Yes'),
-(3, 'Motorola', 1, 'motorolag.jpeg', 'testuser@kcsitglobal.com', 'Yes'),
-(4, 'Dell', 2, 'dell.jpeg', 'testuser@kcsitglobal.com', 'Yes'),
-(6, 'Hp', 2, 'hp.jpeg', 'testuser@kcsitglobal.com', 'No'),
-(7, 'Harrier', 3, 'Harrier.jpeg', 'testuser@kcsitglobal.com', 'Yes'),
-(8, 'i20', 3, 'i20.jpeg', 'testuser@kcsitglobal.com', 'Yes'),
-(9, 'Sports', 3, 'sports.jpeg', 'testuser@kcsitglobal.com', 'No'),
-(10, 'ash', 5, 'bg.jpg', 'testuser@kcsitglobal.com', 'No'),
-(11, 'testq', 5, 'iphone.jpeg', 'testuser@kcsitglobal.com', 'Yes');
+(1, 'Dell', 2, 'dell.jpeg', 'testuser@kcsitglobal.com', 'Yes'),
+(2, 'Mac', 2, 'mac.jpeg', 'vishal@gmail.com', 'Yes'),
+(3, 'Harrier', 3, 'Harrier.jpeg', 'chaitanya@gmail.com', 'Yes'),
+(4, 'Samsung', 1, 'S22.jpeg', 'bhavesh@gmail.com', 'Yes'),
+(5, 'Motorola', 1, 'motorolag.jpeg', 'chaitanya@gmail.com', 'Yes'),
+(6, 'i 20', 3, 'i20.jpeg', 'chaitanya@gmail.com', 'Yes'),
+(7, 'one plus', 1, 'oneplus.jpeg', 'bhavesh@gmail.com', 'No'),
+(8, 'test', 5, 'hp.jpeg', 'bhavesh@gmail.com', 'No');
 
 -- --------------------------------------------------------
 
@@ -155,19 +156,19 @@ ALTER TABLE `super_admin`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `super_admin`

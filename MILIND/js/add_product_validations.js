@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    var $FNameLNameRegEx = /^([a-zA-Z]{2,20})$/;
+    // var $FNameLNameRegEx = /^([a-zA-Z]{2,20})$/;
+    var $FNameLNameRegEx =/^([a-zA-Z/w/]{2,20})$/;
 
     var pnameflag = false, activeflag = false, categoryflag = false, imageflag = false;
 
@@ -11,13 +12,8 @@ $(document).ready(function () {
             pnameflag = false;
         }
         else {
-            if (!$(this).val().match($FNameLNameRegEx)) {
-                $("#pnameval").html("(*) Invalid Product Name..!");
-                pnameflag = false;
-            }
-            else {
+            
                 pnameflag = true;
-            }
         }
     });
     $("#category_id").blur(function () {
@@ -58,7 +54,7 @@ $(document).ready(function () {
     $('#pname').keypress(function (e) {
         $('#pnameval').empty();
         var flag = false;
-        (e.which >= 65 && e.which <= 90) || (e.which >= 92 && e.which <= 122)
+        (e.which >= 65 && e.which <= 90) || (e.which >= 92 && e.which <= 122) || (e.which == 32) || (e.which >= 47 && e.which <= 57)
             ? flag = true
             : (flag = false, $('#pnameval').html('(*) Please Enter Valid Product Name..!'));
         return flag;
@@ -71,13 +67,9 @@ $(document).ready(function () {
         if ($("#pname").val() == "") {
             $("#pnameval").html("(*) Product Name Required..!");
         } else {
-            if (!$("#pname").val().match($FNameLNameRegEx)) {
-                $("#pnameval").html("(*) Invalid Product Name..!");
-                pnameflag = false;
-
-            } else {
+            
                 pnameflag = true;
-            }
+            
         }
         categoryflag = false;
         $("#category_idval").empty();

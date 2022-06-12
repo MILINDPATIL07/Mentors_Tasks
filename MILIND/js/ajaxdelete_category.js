@@ -16,7 +16,7 @@ function deleterow(str) {
                 }
             }
         };
-        xmlhttp.open("GET", "../category/deletecategory.php?id=" + str, true);
+        xmlhttp.open("GET", "../admin/deletecategory.php?id=" + str, true);
         xmlhttp.send();
     }
 }

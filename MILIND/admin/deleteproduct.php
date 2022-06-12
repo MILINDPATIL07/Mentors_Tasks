@@ -14,7 +14,7 @@ $did=$_GET['id'];
   {
       $sql = "DELETE FROM product WHERE id='$did'";
       if ($conn->query($sql) === TRUE) {
-        unlink("uploads/".$row['images']);
+        unlink("../uploads/".$row['images']);
       echo '1';
       } else {
       echo "Error deleting record: " . $conn->error;

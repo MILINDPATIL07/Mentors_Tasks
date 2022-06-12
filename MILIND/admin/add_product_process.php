@@ -5,7 +5,7 @@ if (isset($_POST) && count($_POST) > 0) {
 
     $name = $_POST["name"];
     $category_id = $_POST["category_id"];
-    $createdbyuser = $_SESSION['email'];
+    $createdbyuser = $_SESSION['email1'];
     $active = $_POST["active"];
     $image = $_FILES["image"]["name"];
 

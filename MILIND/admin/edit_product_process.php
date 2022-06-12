@@ -1,17 +1,17 @@
 <?php
 include 'connection.php';
 $id = $_GET['id'];
-if (isset($_REQUEST['edit'])) {
+if (isset($_POST['edit']) && count($_POST) > 0)  {
 
     $name = $_POST["name"];
     $category_id = $_POST["category_id"];
-    $createdbyuser = $_SESSION['email'];
+    $createdbyuser = $_SESSION['email1'];
     $active = $_POST["active"];
     $image = $_FILES["image"]["name"];
 
     if ($name != ""  && $category_id != "" && $active != "") {
 
-        $target_dir = "uploads/";
+        $target_dir = "../uploads/";
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
         $uploadOk = 1;
         $filetype = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -39,7 +39,7 @@ if (isset($_REQUEST['edit'])) {
                     $data = mysqli_query($conn, $select);
                     $result = mysqli_num_rows($data);
                     $row = mysqli_fetch_assoc($data);
-                    unlink("uploads/" . $row['file']);
+                    unlink("../uploads/" . $row['file']);
 
                     $edit = "UPDATE `product` SET `p_name`='$name',`category_id`='$category_id',`images`='$image',`active`='$active',`createdbyuser`='$createdbyuser' WHERE `id`='$id'";
                     $result2 = $conn->query($edit);

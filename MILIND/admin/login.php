@@ -11,13 +11,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="../js/login.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/login_css.css" />
+    <link type="text/css" rel="stylesheet" href="../css/login_css.css" />
 
     
 </head>
-
 <body id="myDiv">   
     <form name="register" action="login_process.php" method="POST">
         <div class="container">
@@ -27,9 +26,7 @@
                     <hr>
                     <small class="text-danger">
                         <span>
-                            <?php if (isset($_GET['msg']))
-                                echo $_GET['msg'];
-                            ?>
+                           
                         </span>
                     </small>
                     <div class="form-group">

@@ -1,11 +1,5 @@
 <?php
-//session_start();
-if (!$_SESSION['email']) {
-    header("Location:../login.php");
-}
-?>
-<?php
-include '../connection.php';
+include 'connection.php';
 $id = $_GET['id'];
 if (isset($_REQUEST['edit'])) {
     $name = $_POST["name"];
@@ -20,7 +14,7 @@ if (isset($_REQUEST['edit'])) {
         $result1 = $conn->query($edit);
 
         if ($result1 == TRUE) {
-            header("Location:admin.php");
+            header("Location:adminlist.php");
         } else {
             echo "Error:" . $edit . "<br>" . $conn->error;
         }

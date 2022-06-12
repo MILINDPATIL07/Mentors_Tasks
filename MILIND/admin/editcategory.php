@@ -1,7 +1,11 @@
 <?php
 session_start();
-if (!$_SESSION['email']) {
-    header("Location:../login.php");
+include 'connection.php';
+@$email = $_SESSION['email1'];
+@$utype = $_SESSION['utype1'];
+echo "$utype";
+if (!$utype == "1" || !$utype == "2") {
+    header("Location:login.php");
 }
 
 include 'edit_category_process.php';
@@ -15,8 +19,8 @@ include 'edit_category_process.php';
 </head>
 
 <body>
-    <div class="pull-right">
-        <h3>Logout : <a href="../logout.php" class="btn btn-warning"><?= $_SESSION['email'] ?></a></h3>
+    <div class="pull-right" style="color:black;">
+        <h3><?php echo "$email" ?> <a href="logout.php" class="btn btn-warning">Logout</a></h3>
     </div>
     <div class="container">
         <div class="row">
@@ -34,7 +38,7 @@ include 'edit_category_process.php';
                             <h3>Edit Category</h3>
                             <div class="form-group">
                                 <strong>Name:</strong>
-                                <input type="text" name="cname" class="form-control" placeholder="Enter Category Name" value="<?= $row['name'] ?>" required>
+                                <input type="text" name="cname" class="form-control" placeholder="Enter Category Name" value="<?= $row['cname'] ?>" required>
                                 <span class="text-danger"></span>
                             </div>
                         </div>
@@ -43,8 +47,12 @@ include 'edit_category_process.php';
                             <div class="form-group">
                                 <select name="active" id="active" class="form-control">
                                     <option value="" disabled>Active</option>Select Option</option>
-                                    <option value="Yes" <?php if ($row['active'] == "Yes") { echo "selected"; } ?>>Yes</option>
-                                    <option value="No" <?php if ($row['active'] == "No") {echo "selected"; } ?>>No</option>
+                                    <option value="Yes" <?php if ($row['active'] == "Yes") {
+                                                            echo "selected";
+                                                        } ?>>Yes</option>
+                                    <option value="No" <?php if ($row['active'] == "No") {
+                                                            echo "selected";
+                                                        } ?>>No</option>
                                 </select>
                             </div>
                             <small id="activeval" class="text-danger"></small>
@@ -58,8 +66,9 @@ include 'edit_category_process.php';
                     <button type="submit" name="edit" class="btn btn-primary">Save</button>
                     <a class="btn btn-primary" href="categorylist.php"> Back</a>
                 </div>
-                 </div>
+                    </div>
         </form>
     </div>
 </body>
+
 </html>

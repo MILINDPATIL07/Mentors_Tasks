@@ -1,7 +1,11 @@
 <?php
 session_start();
-
-if (!$_SESSION['email']) {
+include 'connection.php';
+$id = $_REQUEST['id'];
+@$email = $_SESSION['email1'];
+@$utype = $_SESSION['utype1'];
+// echo "$utype";
+if (!$utype == "1" || !$utype == "2") {
     header("Location:login.php");
 }
 include 'edit_product_process.php';
@@ -18,14 +22,16 @@ include 'edit_product_process.php';
 </head>
 
 <body>
-    <div class="pull-right">
-        <h3>Logout : <a href="../logout.php" class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');"><?= $_SESSION['email'] ?></a></h3>
+    <div class="pull-right style" style="color:black;">
+        <h4><?php echo "$email" ?> : <a href="logout.php" class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');" title="<?php echo "$email" ?>">Logout</a>
+        </h4>
     </div>
+    <br>
     <div class="container">
-        
+
         <form action="" method="POST" enctype="multipart/form-data">
             <?php
-            $sql = "select * from product where id='$id'";
+            $sql = "SELECT * from product where id='$id'";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -43,12 +49,15 @@ include 'edit_product_process.php';
                                 <strong>Category </strong>
                                 <select name="category_id" id="category_id" class="form-control">
                                     <?php
-                                    include '../connection.php';
+
                                     $sql1 = "SELECT * FROM category";
                                     $result1 = mysqli_query($conn, $sql1);
                                     if (mysqli_num_rows($result1) > 0) {
                                         while ($row1 = mysqli_fetch_assoc($result1)) { ?>
-                                            <option value="<?php echo $row1['id'] ?>" <?php if ($row['category_id'] == $row1['id']) {echo "selected";} ?>><?php echo $row1['name'] ?></option>
+                                            <option value="<?php echo $row1['id'] ?>" <?php if ($row['category_id'] == $row1['id']) {
+                                                                                            echo "selected";
+                                                                                        } ?>>
+                                                <?php echo $row1['cname'] ?></option>
                                     <?php }
                                     }
                                     ?>
@@ -59,7 +68,9 @@ include 'edit_product_process.php';
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Created By UserId:</strong>
-                                <span><?= $_SESSION['email'] ?></span>
+                                <span>
+                                    <? $email ?>
+                                </span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -67,8 +78,12 @@ include 'edit_product_process.php';
                                 <strong>Active</strong>
                                 <select name="active" id="active" class="form-control">
                                     <option value="" disabled>Select</option>
-                                    <option value="Yes" <?php if ($row['active'] == "Yes") { echo "selected"; } ?>>Yes</option>
-                                    <option value="No" <?php if ($row['active'] == "No") { echo "selected"; } ?>>No</option>
+                                    <option value="Yes" <?php if ($row['active'] == "Yes") {
+                                                            echo "selected";
+                                                        } ?>>Yes</option>
+                                    <option value="No" <?php if ($row['active'] == "No") {
+                                                            echo "selected";
+                                                        } ?>>No</option>
                                 </select>
                                 <small id="activeval" class="text-danger"></small>
                             </div>
@@ -76,7 +91,7 @@ include 'edit_product_process.php';
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Select Image:</strong>
-                                <input type="file" id="image" name="image" class="form-control" >
+                                <input type="file" id="image" name="image" class="form-control">
                                 <span>Only PNG, JPEG and JPG files are allowed</span>
                                 <span class="text-danger" id="imageval"><?php echo $row['images']; ?></span>
                             </div>
@@ -90,7 +105,6 @@ include 'edit_product_process.php';
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     <button type="submit" name="edit" class="btn btn-primary">Edit Product</button>
                     <a class="btn btn-primary" href="index.php"> Back</a>
-
                 </div>
                     </div>
         </form>

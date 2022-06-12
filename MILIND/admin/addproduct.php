@@ -1,6 +1,10 @@
 <?php
 session_start();
-if (!$_SESSION['email'] == "testuser@kcsitglobal.com") {
+include 'connection.php';
+@$email=$_SESSION['email1'];
+@$utype=$_SESSION['utype1'];
+@$user=$_SESSION['id1'];
+if (!$utype == 1 || !$utype == 2) {
     header("Location:login.php");
 }
 ?>
@@ -11,12 +15,12 @@ if (!$_SESSION['email'] == "testuser@kcsitglobal.com") {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/add_product_validations.js"></script>
+    <script type="text/javascript" src="../js/add_product_validations.js"></script>
 </head>
 </head>
 <body>
     <div class="pull-right">
-        <h3>Logout : <a href="logout.php" class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');"><?= $_SESSION['email'] ?></a></h3>
+        <h3> <?php echo"$email" ?> <a href="logout.php" class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');">Logout</a></h3>
     </div>
 
     <div class="container">
@@ -43,13 +47,12 @@ if (!$_SESSION['email'] == "testuser@kcsitglobal.com") {
                         <select name="category_id" id="category_id" class="form-control">
                         <option value=""  selected="">Select Category</option>
                             <?php
-                            include 'connection.php';
                             //select only active categories form category table 
                             $sql = "SELECT * FROM category where active='Yes'";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) { ?>
-                                    <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
+                                    <option value="<?php echo $row['id'] ?>"><?php echo $row['cname'] ?></option>
                             <?php }
                             }
                             ?>
@@ -57,12 +60,12 @@ if (!$_SESSION['email'] == "testuser@kcsitglobal.com") {
                         <span class="text-danger" id="category_idval"></span>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <!-- <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Created By UserId:</strong>
-                        <span id="createdbyuserval"><?= $_SESSION['email'] ?></span>
+                        <span  id="createdbyuserval" name="user"></?php echo $user; ?></span>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Active</strong>
@@ -86,11 +89,9 @@ if (!$_SESSION['email'] == "testuser@kcsitglobal.com") {
                     <button type="button" id="Btnsubmit" name="btnsubmit" class="btn btn-primary">Add Product</button>
                     <a class="btn btn-primary" onclick="history.back()"> Back</a>
                     <!-- <button onclick="history.back()">Go Back</button> -->
-
                 </div>
             </div>
         </form>
     </div>
 </body>
-
 </html>

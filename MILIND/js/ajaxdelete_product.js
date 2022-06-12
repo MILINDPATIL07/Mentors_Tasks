@@ -18,7 +18,7 @@ function deleterow(str) {
             }
         }
     };
-    xmlhttp.open("GET", "deleteproduct.php?id=" + str, true);
+    xmlhttp.open("GET", "../admin/deleteproduct.php?id=" + str, true);
     xmlhttp.send();
     }
 }

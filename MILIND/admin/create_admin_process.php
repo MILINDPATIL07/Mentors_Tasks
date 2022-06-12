@@ -1,9 +1,5 @@
 <?php
-//session_start(); 
-// if (!$_SESSION['email']) {
-// 	header("Location:../login.php");
-// }
-include '../connection.php';
+include 'connection.php';
 //session_start(); 
 
 if (isset($_POST) && count($_POST) > 0) {
@@ -12,24 +8,23 @@ if (isset($_POST) && count($_POST) > 0) {
 	$password = $_POST["password"];
 	$gender = $_POST["gender"];
 	@$hobbies = implode(',', (array)$_POST["checkbox"]);
+	$utype="2";
 	if ($hobbies == "") {
 		echo "Please Select Any Hobbies" . "<br>";
 	}
 	//check if alrady exist 
-
 	$qry1 = "SELECT * FROM admin where email = '" . $email . "' ";
 	$rs1 = mysqli_query($conn, $qry1);
 	if (mysqli_num_rows($rs1) > 0) {
 		//  echo"$qry";
-		// $_SESSION['error_email_message'] = "EMAIL ALREADY EXIST";
-		header('Location:createadmin.php?email=EMAIL ALREADY EXIST');
+		 $_SESSION['email_error'] = "EMAIL ALREADY EXIST";
+		header('Location:createadmin.php?email_error=EMAIL ALREADY EXIST');
 		exit();
 	}
-
 	if ($name != "" && $email != "" && $password != "" && $gender != "" && $hobbies != "") {
-		$sql = "INSERT INTO admin VALUES (NULL,'$name','$email','$gender','$hobbies','$password')";
+		$sql = "INSERT INTO admin VALUES (NULL,'$name','$email','$gender','$hobbies','$password','$utype')";
 		if (mysqli_query($conn, $sql)) {
-			header("Location:admin.php");
+			header("Location:adminlist.php");
 		} else {
 			echo "ERROR: Sorry $sql. " . mysqli_error($conn);
 		}

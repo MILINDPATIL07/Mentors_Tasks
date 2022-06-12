@@ -1,16 +1,21 @@
 <?php
 session_start();
-if (!$_SESSION['email']) {
-    header("Location:../login.php");
-} 
+include 'connection.php';
+@$email = $_SESSION['email1'];
+@$utype = $_SESSION['utype1'];
+echo "$utype";
+if ($utype == 2) {
+    header("Location:login.php");
+}
 include "edit_admin_process.php";
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title> Edit Admin</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
     <!-- Jquery Validation Extermal Link  -->
@@ -19,7 +24,7 @@ include "edit_admin_process.php";
 
 <body>
     <div class="pull-right">
-        <h4>Logout : <a href="../logout.php " class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');"><?= $_SESSION['email'] ?></a></h4>
+        <h4> <a href="../logout.php " class="btn btn-warning" onClick="return confirm('Are You Sure You Want to logout?');" title="<?php echo "$email" ?>"><?php echo "$email" ?></a></h4>
     </div>
     <div class="container">
         <div class="row">
@@ -31,7 +36,7 @@ include "edit_admin_process.php";
         </div>
         <form action="" method="POST">
             <?php
-            
+
             $sql = "select * from admin where id='$id'";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
@@ -58,9 +63,13 @@ include "edit_admin_process.php";
                             <div class="form-group">
                                 <strong>Gender:</strong>
                                 <div class="input-group">
-                                    <input type="radio" name="gender" id="male" value="male" <?php if ($row['gender'] == "Male") { echo "checked"; } ?>>
+                                    <input type="radio" name="gender" id="male" value="male" <?php if ($row['gender'] == "Male") {
+                                                                                                    echo "checked";
+                                                                                                } ?>>
                                     <span>Male</i></span><br>
-                                    <input type="radio" name="gender" id="female" value="female" <?php if ($row['gender'] == "Female") {echo "checked"; } ?>>
+                                    <input type="radio" name="gender" id="female" value="female" <?php if ($row['gender'] == "Female") {
+                                                                                                        echo "checked";
+                                                                                                    } ?>>
                                     <span> Female</i></span>
                                 </div>
                                 <span class="text-danger"></span>
@@ -100,7 +109,7 @@ include "edit_admin_process.php";
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     <button type="submit" name="edit" class="btn btn-primary">Save</button>
                 </div>
-                    </div>
+                </div>
         </form>
     </div>
 </body>

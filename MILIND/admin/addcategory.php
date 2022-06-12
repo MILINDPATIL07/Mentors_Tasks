@@ -1,10 +1,13 @@
 <?php
 
 session_start();
-if (!$_SESSION['email']) {
-    header("Location:../login.php");
-}
-
+include 'connection.php';
+@$email=$_SESSION['email1'];
+$utype=$_SESSION['utype1'];
+echo "$utype";
+if (!$utype == 1 || !$utype == 2) {
+    header("Location:login.php");
+} 
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,13 +23,13 @@ if (!$_SESSION['email']) {
 
 <body>
     <div class="pull-right">
-        <h3>Logout : <a href="../logout.php" class="btn btn-warning"><?= $_SESSION['email'] ?></a></h3>
+        <h3> <?php echo"$email" ?> <a href="logout.php" class="btn btn-warning" title="<?php echo"$email" ?>">Logout</a></h3>
     </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-right">
-                   <br> <a class="btn btn-primary" href="categorylist.php"> Back</a>
+                   <br> <a class="btn btn-info  " href="categorylist.php"> Back</a>
                 </div>
             </div>
         </div>
@@ -55,12 +58,10 @@ if (!$_SESSION['email']) {
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="button" id="Btnsubmit" name="btnsubmit" class="btn btn-primary">Submit</button>
-
-                    <!-- <button type="button" id="Btnsubmit" name="btnsubmit" class="btn btn-primary">Add Category</button> -->
+                <!-- <button type="button" id="Btnsubmit" name="btnsubmit" class="btn btn-primary">Add Category</button> -->
                 </div>
             </div>
         </form>
     </div>
 </body>
-
 </html>
