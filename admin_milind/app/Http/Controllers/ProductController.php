@@ -56,7 +56,7 @@ class ProductController extends Controller
             'image' => 'required|mimes:jpg,jpeg,png|max:2048',
             'active' => 'required'
         ], [
-            'pname.required' => 'product Name is Required!',
+            'pname.required' => 'Product Name is Required!',
             'active.required' => 'Active Required!'
         ]);
 

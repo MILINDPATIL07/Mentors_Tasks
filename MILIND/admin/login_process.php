@@ -1,7 +1,8 @@
 <?php
 include 'connection.php';
 session_start();
-//var_dump($_post);
+var_dump($_POST);
+//exit;
 // if(!isset($_POST["btn_sb"]))
 // {
 // 	header("location:login.php");
@@ -47,7 +48,7 @@ if(isset($_POST) && count($_POST)>0){
 		}else{
 
 			//echo "INVALID LOGIN";
-			header("location:login.php?masInvalid credentials");
+			header("location:login.php?msg=Invalid credentials");
 			
 		}
  }

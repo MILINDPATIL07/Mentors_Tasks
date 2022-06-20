@@ -21,15 +21,17 @@
         }
     </style>
 </head>
+<div class="" style="text-align: right;padding-right:190px;">
+    <span>Select Category : </span>
         <select name="category" id="category">
-            <option value=" " disabled="" selected=""   > Select Category</option>
+            <option value=" " selected="">Select </option>
             @if( count ( $categories ) > 0 )
             @foreach ($categories as $category)
             <option value="{{ $category['id'] }}"> {{ $category->cname }}</option>
             @endforeach
             @endif
         </select>
-
+</div>
 <body class="antialiased">
     <div class="container">
         <div class="row justify-content-center">
@@ -48,7 +50,7 @@
                             <th>Product Name</th>
                             <th>Category Name</th>
                             <th>Product Image</th>
-                            <!-- <th>created by user</th> -->
+                            <th>created by user</th>
                             <th>Active</th>
                         </tr>
                         <tbody id="tbody">
@@ -59,7 +61,7 @@
                                 <td>{{ $product->pname }}</td>
                                 <td>{{ $product->cname }}</td>
                                 <td><img src=" {{ asset('public/images/'. $product->image)}}" width="160" height="80"></td>
-                                <!-- <td>{{ $product->createdbyuserid }}</td> -->
+                                 <td>{{ $product->createdbyuserid }}</td>
                                 <td>{{ $product->active }}</td>
                             </tr>
                             @endforeach
@@ -91,6 +93,7 @@
                                                         <td>  ' + products[i]['pname'] + '</td>\
                                                         <td>  ' + products[i]['cname'] + ' </td>\
                                                         <td> <img src="public/images/' + products[i]['image'] + '"width="160" height="80"> </td>\
+                                                        <td>  ' + products[i]['createdbyuserid'] + ' </td>\
                                                            <td>  ' + products[i]['active'] + ' </td>\     </tr>';
                                             }
 

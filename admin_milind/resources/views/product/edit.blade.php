@@ -36,17 +36,18 @@
                             <div class="form-group">
                                 <strong>Product Name:</strong>
                                 <input type="text" name="pname" class="form-control" value="{{ $product->pname }}" placeholder="Enter Product Name">
-
                             </div>
+                            @if ($errors->has('pname'))
+                            <span class="text-danger">{{ $errors->first('pname') }}</span>
+                            @endif
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Categories :</strong>
                                 <select class="form-control" name="category_id">
-                                    <option value="">Select</option>
+                                    <option value="" disabled>Select</option>
                                     @foreach ($new as $key => $value)
                                     <option value="{{$value->id}}" {{$product->category_id==$value->id ? 'selected' : ''}}>{{$value->cname}}</option>
-
                                     @endforeach
                                 </select>
                             </div>
@@ -55,8 +56,10 @@
                             <div class="form-group">
                                 <strong>Product Image</strong>:</strong>
                                 <input type="file" name="image" class="form-control" value="{{ $product->image }}">
-
                             </div>
+                            @if ($errors->has('image'))
+                            <span class="text-danger">{{ $errors->first('image') }}</span>
+                            @endif
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -67,6 +70,9 @@
                                     <option name="active" value="Yes" {{ $product->active=="Yes"? "selected" : "" }}>Yes</option>
                                     <option name="active" value="No" {{ $product->active=="No"? "selected" : "" }}>No</option>
                                 </select>
+                                @if ($errors->has('active'))
+                                <span class="text-danger">{{ $errors->first('active') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

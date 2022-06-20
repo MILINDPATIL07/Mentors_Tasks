@@ -49,7 +49,7 @@ class CategoryController extends Controller
             'active' => 'required',
 
         ], [
-            'cname.required' => 'category name is Required!',
+            'cname.required' => 'Category Name is Required!',
             'active.required' => 'Active Required!'
         ]);
 

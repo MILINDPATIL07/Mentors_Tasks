@@ -5,9 +5,9 @@ include 'connection.php';
 @$utype = $_SESSION['utype1'];
 echo "$utype";
 
-if (!$utype == "1" || !$utype == "2") {
-    header("Location:login.php");
-}
+// if (!$utype == "1" || !$utype == "2") {
+//     header("Location:login.php");
+// }
 ?>
 <!DOCTYPE html>
 <html>

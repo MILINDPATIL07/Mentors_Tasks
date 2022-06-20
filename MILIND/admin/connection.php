@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname="milind";	
+$dbname="jaypal";	
 
 //create connection
 $conn = mysqli_connect($servername,$username,$password);

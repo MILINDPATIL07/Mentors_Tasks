@@ -58,9 +58,9 @@ class AdminController extends Controller
             'password' => 'required'
         ], [
             'name.required' => 'Admin Name is Required',
-            'name.min' => 'Minimum 2 charachers require!!',
-            'name.max' => 'Miximum 10 charachers require!!',
-            'email.required' => 'Email is required',
+            'name.min' => 'Minimum 2 charachers Require!!',
+            'name.max' => 'Miximum 10 charachers Require!!',
+            'email.required' => 'Email is Required',
             'email.unique' => 'Email is already exists!!'
         ]);
 
