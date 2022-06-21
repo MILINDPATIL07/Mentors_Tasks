@@ -12,8 +12,8 @@
                         <a class="btn btn-primary" href="product/create">Add New Product</a>
                     </div>
                 </div>
-
                 <table class="table table-bordered" style="margin-top:1%;">
+                   
                     <tr style="background-color:#4a5568; color:white;">
                         <th>No</th>
                         <th>Product Name</th>
@@ -27,14 +27,13 @@
 
                     </tr>
                     @foreach($data as $key => $value)
-                    <tr>
+                    <tr style="text-align: center">
                         <td>{{ ++$i }}</td>
                         <td>{{ $value->pname }}</td>
                         <td>{{ $value->cname }}</td>
                         <td><img src=" {{ asset('public/images/' . $value->image)}}" width="160" height="80"> </td>
                         <td>{{ $value->createdbyuserid }}</td>
                         <td>{{ $value->active }}</td>
-
                         <td>
                             <form action="{{ route('product.destroy',$value->id) }}" method="POST">
 

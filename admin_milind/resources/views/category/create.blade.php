@@ -31,13 +31,13 @@
                 </div>
                 @endif
 
-                <form action="{{ route('category.store') }}" method="POST">
+                <form action="{{ route('category.store') }}" method="POST" id="catregForm">
                     @csrf
                     <div class="row" style="padding-bottom:1%">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Category Name:</strong>
-                                <input type="text" name="cname" class="form-control" placeholder="Enter Category Name">
+                                <input type="text" name="cname" id="cname" class="form-control" placeholder="Enter Category Name">
                                 @if ($errors->has('cname'))
                                 <span class="text-danger">{{ $errors->first('cname') }}</span>
                                 @endif

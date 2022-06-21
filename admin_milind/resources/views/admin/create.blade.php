@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center" style="margin-top: 3rem;">
 
@@ -30,13 +31,14 @@
                 </div>
                 @endif
 
-                <form action="{{ route('admin.store') }}" method="POST">
+                <form action="{{ route('admin.store') }}" method="POST" id="regForm">
                     @csrf
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Name:</strong>
-                                <input type="text" name="name" class="form-control" placeholder="Enter Admin Name">
+                                <input type="text" name="name" id="name" class="form-control"
+                                    placeholder="Enter Admin Name">
                                 @if ($errors->has('name'))
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                                 @endif
@@ -45,7 +47,8 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Email:</strong>
-                                <input type="text" name="email" class="form-control" placeholder="Enter Email">
+                                <input type="text" name="email" id="email" class="form-control"
+                                    placeholder="Enter Email">
                                 @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                                 @endif
@@ -63,11 +66,11 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>hobbies:</strong>
-                                <input type="checkbox" name="hobbies[]" value="cricket" />Cricket
-                                <input type="checkbox" name="hobbies[]" value="Singing" />Singing
-                                <input type="checkbox" name="hobbies[]" value="Shopping" />Shopping
-                                <input type="checkbox" name="hobbies[]" value="Swimming" />Swimming
+                                <strong>Hobbies:</strong>
+                                <input type="checkbox" id="hobbies" name="hobbies[]" value="cricket" />Cricket
+                                <input type="checkbox" id="hobbies" name="hobbies[]" value="Singing" />Singing
+                                <input type="checkbox" id="hobbies" name="hobbies[]" value="Shopping" />Shopping
+                                <input type="checkbox" id="hobbies" name="hobbies[]" value="Swimming" />Swimming
                                 @if ($errors->has('hobbies'))
                                 <span class="text-danger">{{ $errors->first('hobbies') }}</span>
                                 @endif
@@ -76,7 +79,8 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Password:</strong>
-                                <input type="password" class="form-control" name="password" placeholder="Enter Password" />
+                                <input type="password" class="form-control" name="password" id="password"
+                                    placeholder="Enter Password" />
                                 @if ($errors->has('password'))
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                                 @endif
@@ -91,4 +95,4 @@
         </div>
     </div>
 </div>
-        @endsection
+@endsection

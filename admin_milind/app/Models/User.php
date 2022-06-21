@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
         'gender',
         'hobbies',
+        'usertype',
+        
     ];
     public function setHobbiesAttribute($data)
     {

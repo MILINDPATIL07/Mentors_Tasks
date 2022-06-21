@@ -32,7 +32,7 @@ class HomeController extends Controller
         return view('dashboard',compact('products','categories'))
             ->with('i', (request()->input('page', 1) - 1) * 2);
     }
-    /**
+    /**    
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable

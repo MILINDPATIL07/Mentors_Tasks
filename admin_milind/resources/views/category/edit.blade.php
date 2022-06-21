@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center" style="margin-top: 3rem;">
 
@@ -30,7 +31,7 @@
                 </div>
                 @endif
 
-                <form action="{{ route('category.update',$category->id) }}" method="POST">
+                <form action="{{ route('category.update',$category->id) }}" method="POST" id="cateditForm">
                     @csrf
                     @method('PUT')
 
@@ -38,7 +39,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Category Name:</strong>
-                                <input type="text" name="cname" value="{{ $category->cname }}" class="form-control" placeholder="Enter Name">
+                                <input type="text" name="cname" id="cname" value="{{ $category->cname }}" class="form-control" placeholder="Enter Name">
                                 @if ($errors->has('cname'))
                                 <span class="text-danger">{{ $errors->first('cname') }}</span>
                                 @endif

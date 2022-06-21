@@ -16,23 +16,19 @@ class CreateUsersSeeder extends Seeder
     public function run()
     {
         $users = [
-            [
-               'name'=>'User',
-               'email'=>'milind@gmail.com',
-               'type'=>0,
-               'password'=> bcrypt('Pass@123'),
-            ],
+           
             [
                'name'=>'Super Admin User',
-               'email'=>'testuser@kcsitglobal.com',
-               'type'=>1,
+               'email'=>'testuser@kcsitglobal.com',              
                'password'=> bcrypt('secret'),
-            ],
+               'usertype'=>0,
+
+            ]
             
         ];
-        foreach ($users as $key => $user) {
-            User::create($user);
-        }
+       
+            User::create($users);
+        
     }
 }
     
