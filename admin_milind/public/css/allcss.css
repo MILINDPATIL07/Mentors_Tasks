@@ -1,0 +1,7 @@
+svg {
+    height: 12px;
+}    
+label.error {
+    color: #dc3545;
+    font-size: 14px;
+}

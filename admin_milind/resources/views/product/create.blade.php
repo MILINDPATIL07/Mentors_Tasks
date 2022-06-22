@@ -28,14 +28,14 @@
                 </div>
                 @endif
 
-                <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data" id="ProductForm">
                     @csrf
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Product Name:</strong>
-                                <input type="text" name="pname" class="form-control" value="{{old('pname')}}" placeholder="Enter Product Name">
+                                <input type="text" name="pname" id="pname" class="form-control" value="{{old('pname')}}" placeholder="Enter Product Name">
                                 @if ($errors->has('pname'))
                                 <span class="text-danger">{{ $errors->first('pname') }}</span>
                                 @endif
@@ -55,7 +55,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Product Image</strong>:</strong>
-                                <input type="file" name="image" class="form-control" value="{{old('image')}}" accept=".jpg,.jpeg,.png">
+                                <input type="file" name="image" id="image" class="form-control" value="{{old('image')}}" accept=".jpg,.jpeg,.png">
                                 @if ($errors->has('image'))
                                 <span class="text-danger">{{ $errors->first('image') }}</span>
                                 @endif
@@ -65,7 +65,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Active:</strong>
-                                <select class="form-control" name="active">
+                                <select class="form-control" name="active" id="active">
                                     <option value="">Select</option>
                                     <option name="active" value="Yes">Yes</option>
                                     <option name="active" value="No">No</option>

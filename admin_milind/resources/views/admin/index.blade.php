@@ -69,6 +69,5 @@
             </div>
         </div>
         {!! $data->links() !!}
-    </div>
-    
+    </div>    
     @endsection

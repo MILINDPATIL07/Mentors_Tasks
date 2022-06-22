@@ -27,7 +27,7 @@ class AdminController extends Controller
         //     if (!Auth::check()){
         //         return redirect("login")->withSuccess('You are not allowed to access');
         //    }
-        $data = User::where('usertype', '1')->paginate(2);
+        $data = User::where('usertype', '1')->paginate(5);
 
         return view('admin.index', compact('data'))
             ->with('i', (request()->input('page', 1) - 1) * 2);
