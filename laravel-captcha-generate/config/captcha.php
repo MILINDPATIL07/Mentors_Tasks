@@ -15,13 +15,17 @@ return [
     */
     'ExampleCaptcha' => [
         'UserInputID' => 'CaptchaCode',
-        'CodeLength' => CaptchaRandomization::GetRandomCodeLength(4, 6),
+        'CodeLength' => 5,
         'ImageWidth' => 250,
         'ImageHeight' => 50,
-        'CodeStyle' => CodeStyle::Numeric,
+        'SoundStyle' => SoundStyle::Radio,
+        'CodeStyle' => CodeStyle::Alpha,
         'ImageStyle' => [
+            ImageStyle::Radar,
             ImageStyle::Collage,
+            ImageStyle::Fingerprints,
         ],
+
 
     ],
 

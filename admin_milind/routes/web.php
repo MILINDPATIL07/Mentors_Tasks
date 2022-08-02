@@ -30,29 +30,30 @@ Route::resource('admin', AdminController::class);
 Route::resource('category', CategoryController::class);
 
 Route::resource('product', ProductController::class);
+
 Route::get('/', [HomeController::class, 'dashboard']);
 
 Route::get('/filter', [HomeController::class, 'filterproduct'])->name('filter');
 
 
 //Auth::routes();
-  
+
 /*------------------------------------------
 --------------------------------------------
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
 // Route::middleware(['auth', 'user-access:user'])->group(function () {
-  
+
 //     Route::get('/home', [HomeController::class, 'index'])->name('home');
 // });
-  
+
 /*------------------------------------------
 --------------------------------------------
 All Super Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 // Route::middleware(['auth', 'user-access:super-admin'])->group(function () {
-  
+
 //     Route::get('/super-admin/home', [HomeController::class, 'superAdminHome'])->name('super.admin.home');
 // });
